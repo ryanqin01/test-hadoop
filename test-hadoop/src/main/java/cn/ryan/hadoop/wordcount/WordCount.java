@@ -1,4 +1,7 @@
-package cn.ryan.hadoop;
+package cn.ryan.hadoop.wordcount;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -18,8 +21,11 @@ public class WordCount {
 		job.setReducerClass(IntSumReducer.class);
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(IntWritable.class);
-		FileInputFormat.addInputPath(job, new Path(args[0]));
-		FileOutputFormat.setOutputPath(job, new Path(args[1] + System.currentTimeMillis()));
+		FileInputFormat.addInputPath(job, new Path("input"));
+		SimpleDateFormat sdf = new SimpleDateFormat();
+		sdf.applyPattern("yyyy-MM-dd-HH-mm-ss");
+		String path = sdf.format(new Date());
+		FileOutputFormat.setOutputPath(job, new Path("output-" + path));
 		System.exit(job.waitForCompletion(true) ? 0 : 1);
 	}
 }
