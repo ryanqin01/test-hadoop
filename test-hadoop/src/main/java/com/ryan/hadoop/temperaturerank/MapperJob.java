@@ -35,6 +35,5 @@ public class MapperJob extends Mapper<LongWritable, Text, KeyPair, Text> {
 				e.printStackTrace();
 			}
 		}
-
 	}
 }

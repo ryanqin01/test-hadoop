@@ -13,5 +13,4 @@ public class ReducerJob extends Reducer<KeyPair, Text, IntWritable, Text> {
 			context.write(new IntWritable(key.getYear()), v);
 		}
 	}
-
 }

@@ -9,5 +9,4 @@ public class Partition extends Partitioner<KeyPair, Text> {
 	public int getPartition(KeyPair key, Text value, int num) {
 		return key.getYear() % num;
 	}
-
 }
