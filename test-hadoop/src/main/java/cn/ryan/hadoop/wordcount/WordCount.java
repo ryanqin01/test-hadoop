@@ -21,11 +21,11 @@ public class WordCount {
 		job.setReducerClass(IntSumReducer.class);
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(IntWritable.class);
-		FileInputFormat.addInputPath(job, new Path("input"));
+		FileInputFormat.addInputPath(job, new Path("input/wordcount"));
 		SimpleDateFormat sdf = new SimpleDateFormat();
 		sdf.applyPattern("yyyy-MM-dd-HH-mm-ss");
 		String path = sdf.format(new Date());
-		FileOutputFormat.setOutputPath(job, new Path("output-" + path));
+		FileOutputFormat.setOutputPath(job, new Path("output/wordcount-" + path));
 		System.exit(job.waitForCompletion(true) ? 0 : 1);
 	}
 }
